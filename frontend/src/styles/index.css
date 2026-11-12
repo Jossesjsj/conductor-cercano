@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --c-disponible: #22c55e;
+  --c-ocupado: #f59e0b;
+  --c-servicio: #ef4444;
+  --c-inactivo: #64748b;
+}
+
+html, body, #root { height: 100%; }
+body {
+  background:
+    radial-gradient(1200px 600px at 85% -10%, rgba(59, 130, 246, 0.10), transparent 60%),
+    radial-gradient(900px 500px at -10% 110%, rgba(34, 211, 238, 0.06), transparent 60%),
+    #070b14;
+  font-feature-settings: "cv11", "ss01";
+}
+
+@layer components {
+  .panel {
+    @apply rounded-2xl border border-panel-borde bg-panel shadow-panel backdrop-blur-xl;
+  }
+  .panel-solido {
+    @apply rounded-2xl border border-panel-borde bg-panel-solido shadow-panel;
+  }
+  .etiqueta {
+    @apply text-[11px] font-medium uppercase tracking-[0.08em] text-slate-400;
+  }
+  .campo {
+    @apply w-full rounded-lg border border-slate-700/60 bg-slate-900/70 px-3 py-2 text-sm text-slate-100 outline-none transition
+      placeholder:text-slate-500 focus:border-acento focus:ring-2 focus:ring-acento/25;
+  }
+  .boton {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-3.5 py-2 text-sm font-medium transition
+      disabled:cursor-not-allowed disabled:opacity-40;
+  }
+  .boton-primario {
+    @apply boton bg-gradient-to-r from-blue-600 to-cyan-500 text-white shadow-[0_6px_20px_-6px_rgba(34,211,238,0.6)]
+      hover:brightness-110 active:brightness-95;
+  }
+  .boton-secundario {
+    @apply boton border border-slate-700/70 bg-slate-800/60 text-slate-200 hover:border-slate-500 hover:bg-slate-800;
+  }
+  .boton-fantasma {
+    @apply boton text-slate-300 hover:bg-slate-800/70 hover:text-white;
+  }
+  .tabla th {
+    @apply whitespace-nowrap px-3 py-2.5 text-left text-[11px] font-semibold uppercase tracking-wider text-slate-400;
+  }
+  .tabla td {
+    @apply whitespace-nowrap px-3 py-2.5 text-sm text-slate-200;
+  }
+  .num { @apply font-mono tabular-nums; }
+}
+
+/* Barras de desplazamiento discretas */
+* { scrollbar-width: thin; scrollbar-color: rgba(100, 116, 139, 0.35) transparent; }
+*::-webkit-scrollbar { width: 8px; height: 8px; }
+*::-webkit-scrollbar-thumb { background: rgba(100, 116, 139, 0.35); border-radius: 8px; }
+
+/* MapLibre: integración con el tema oscuro */
+.maplibregl-ctrl-group { background: rgba(13, 20, 35, 0.9) !important; border: 1px solid rgba(148,163,184,0.15); }
+.maplibregl-ctrl-group button + button { border-top: 1px solid rgba(148,163,184,0.15) !important; }
+.maplibregl-ctrl-group button .maplibregl-ctrl-icon { filter: invert(0.85); }
+.maplibregl-ctrl-attrib { background: rgba(7, 11, 20, 0.7) !important; color: #94a3b8 !important; font-size: 10px; }
+.maplibregl-ctrl-attrib a { color: #cbd5e1 !important; }
+.maplibregl-popup-content { background: #0d1423; color: #e2e8f0; border: 1px solid rgba(148,163,184,0.2); border-radius: 12px; padding: 10px 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+.maplibregl-popup-tip { border-top-color: #0d1423 !important; border-bottom-color: #0d1423 !important; }
+.maplibregl-canvas { outline: none; }
+
+@keyframes pulso-anillo { 0% { transform: scale(0.6); opacity: 0.9 } 100% { transform: scale(2.2); opacity: 0 } }
+.pulso::after {
+  content: ""; position: absolute; inset: 0; border-radius: 9999px; border: 2px solid currentColor;
+  animation: pulso-anillo 1.8s ease-out infinite;
+}

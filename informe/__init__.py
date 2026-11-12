@@ -1,0 +1,1 @@
+"""Generación del informe técnico."""

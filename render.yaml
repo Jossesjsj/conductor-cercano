@@ -1,0 +1,24 @@
+# Blueprint de Render: un servicio web Docker (API + WebSocket + frontend compilado).
+# Plan gratuito: sin disco persistente, los grafos y la BD SQLite se regeneran en cada arranque.
+services:
+  - type: web
+    name: conductor-cercano
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    region: oregon
+    healthCheckPath: /api/salud
+    autoDeploy: true
+    envVars:
+      - key: CC_ENTORNO
+        value: render
+      - key: CC_DIRECTORIO_DATOS
+        value: /app/datos
+      - key: CC_FUENTE_OSM
+        value: auto
+      - key: CC_CONDUCTORES_POR_DEFECTO
+        value: "1500"
+      - key: CC_ORIGENES_CORS
+        value: https://conductor-cercano.onrender.com
+      - key: CC_AGENTE_USUARIO
+        value: ConductorCercano/1.0 (proyecto academico de movilidad)

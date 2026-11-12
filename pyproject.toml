@@ -1,0 +1,11 @@
+[project]
+name = "conductor-cercano"
+version = "1.0.0"
+description = "Plataforma de movilidad: Quadtree, Haversine y Dijkstra propios sobre redes viales reales de Lima y Callao"
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+addopts = "-q"
+markers = ["red: pruebas que requieren grafos OSM descargados en datos/grafos"]

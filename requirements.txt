@@ -1,0 +1,22 @@
+# Backend de CONDUCTOR CERCANO (versiones verificadas en desarrollo)
+fastapi==0.162.5
+uvicorn[standard]==0.54.0
+websockets==17.4
+pydantic==2.14.3
+pydantic-settings==2.16.2
+SQLAlchemy==2.1.8
+# Datos geográficos (descarga/carga de grafos; NO se usan sus rutas cortas ni índices espaciales)
+osmnx==2.1.1
+networkx==3.7
+geopandas==1.2.0
+shapely==2.2.0
+pyproj==3.8.0
+osmium==4.3.2
+numpy==2.5.4
+pandas==3.1.1
+requests==2.34.2
+# Visualización, informe y métricas
+folium==0.20.0
+matplotlib==3.11.2
+reportlab==5.1.0
+psutil==7.2.2
